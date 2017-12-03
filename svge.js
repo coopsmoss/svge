@@ -1,11 +1,14 @@
 var regex = new RegExp('^[0-9]*(%|em|ex|px|in|cm|mm|pt|pc)?$'); // regular numerical string with the possibility of spaces or a percent  //(old one ^[0-9% ]*$)
 
-//wait for the svg file to load then parse it
-var mySVG = document.getElementById("svg1");
-mySVG.addEventListener("load",function() {
-    var svgDoc = mySVG.contentDocument;
-    parseXML(svgDoc);
-}, false);
+//call this on the id of you SVGE file to have it processed to standared SVG
+function processSVGE(SVGE_id){
+	//wait for the svg file to load then parse it
+	var mySVG = document.getElementById(SVGE_id);
+	mySVG.addEventListener("load",function() {
+		var svgDoc = mySVG.contentDocument;
+		parseXML(svgDoc);
+	}, false);
+}
 
 //given the root of the xml doc, parse the tree
 function parseXML(doc){
@@ -28,7 +31,7 @@ function parseXML(doc){
 	            if( ats[i].name.toLowerCase() == "name")//pull out the name attribute
 	            	name = ats[i].value;
 	            if( ats[i].name.toLowerCase() == "value")//pull out the value attibute
-	            	value = ats[i].value;
+	            	value = eval(ats[i].value);
 	        }
 	    }
 	    eval(name + " = " + value + ";"); // declare the name as a global varibale with the value
@@ -56,6 +59,7 @@ function parseAttribute(attribute){
 		case 'exponent'  : interpretAttribute(attribute); break;
 		case 'fx' : interpretAttribute(attribute); break;
 		case 'fy' : interpretAttribute(attribute); break;
+		case 'font-size' : interpretAttribute(attribute); break;
 		case 'hanging'  : interpretAttribute(attribute); break;
 		case 'height' : interpretAttribute(attribute); break;
 		case 'horiz-adv-x'  : interpretAttribute(attribute); break;
@@ -104,8 +108,12 @@ function parseAttribute(attribute){
 		case 'vert-origin-y'  : interpretAttribute(attribute); break;
 		case 'width'  : interpretAttribute(attribute); break;
 		case 'x'  : interpretAttribute(attribute); break;
+		case 'x1'  : interpretAttribute(attribute); break;
+		case 'x2'  : interpretAttribute(attribute); break;
 		case 'x-height'  : interpretAttribute(attribute); break;
 		case 'y'  : interpretAttribute(attribute); break;
+		case 'y1'  : interpretAttribute(attribute); break;
+		case 'y2'  : interpretAttribute(attribute); break;
 		case 'z'  : interpretAttribute(attribute); break;
         default       : break;
     }
