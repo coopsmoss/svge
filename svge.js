@@ -31,7 +31,7 @@ function parseXML(doc){
 	            if( ats[i].name.toLowerCase() == "name")//pull out the name attribute
 	            	name = ats[i].value;
 	            if( ats[i].name.toLowerCase() == "value")//pull out the value attibute
-	            	value = eval(ats[i].value);
+	            	value = ats[i].value;
 	        }
 	    }
 	    eval(name + " = " + value + ";"); // declare the name as a global varibale with the value
