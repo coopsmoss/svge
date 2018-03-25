@@ -39,4 +39,4 @@ A cirlce with a line drawn to the outside:
 
 The advantage of this is you can cahnge the values of the variable and the line will always draw to the edge of the circle because it does its own trig
 
-You can see more examples [here](http://coppermoose.design/svge/) (notice the circel at the bottom changes size when you refresh the page because it makes a Math.ranndom() call)
+You can see more examples [here](http://cooperhart.xyz/projects/svge/) (notice the circel at the bottom changes size when you refresh the page because it makes a Math.ranndom() call)
